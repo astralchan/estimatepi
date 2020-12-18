@@ -20,8 +20,7 @@
 float
 random_number(float lower_bound, float upper_bound)
 {
-	float random_number = ( upper_bound - lower_bound ) *
-		(float)rand()/(float)(RAND_MAX) + lower_bound;
+	float random_number = ( upper_bound - lower_bound ) * (float)rand()/(float)(RAND_MAX) + lower_bound;
 	return random_number;
 }
 
@@ -36,8 +35,7 @@ distance(float x, float y)
 int
 main(void)
 {
-	srand(time(NULL)); /* Sets random seed that is based off of the clock of the
-			    * system. */
+	srand(time(NULL)); /* Sets random seed that is based off of the clock of the system. */
 
 	float coord[2];
 	int points_inside = 0; /* Count starts with 0 points inside. */
