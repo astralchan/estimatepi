@@ -1,0 +1,11 @@
+# Installation
+Set preferred installation path in config.mk, as well as preferred C compiler. Then, to install estimatepi, simply run
+```
+make
+make install
+```
+# Uninstallation
+To uninstall estimatepi, simply run
+```
+make uninstall
+```
