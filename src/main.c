@@ -15,6 +15,9 @@
 
 #include "config.h"
 
+/* definitions */
+#define RADIUS 0.5
+
 /* e.g. random_number(-4.5, 80) will generate a random number between -4.5 and
  * 80. */
 float
@@ -40,9 +43,9 @@ main(void)
 	float coord[2];
 	int points_inside = 0; /* Count starts with 0 points inside. */
 	for (int index = 1; index <= iterations; index++) {
-		coord[0] = random_number(-0.5,0.5);
-		coord[1] = random_number(-0.5,0.5);
-		if (distance(coord[0], coord[1]) <= 0.5)
+		coord[0] = random_number(-RADIUS, RADIUS);
+		coord[1] = random_number(-RADIUS, RADIUS);
+		if (distance(coord[0], coord[1]) <= RADIUS)
 			points_inside++;
 	}
 	float result = 4 * ((float)points_inside / (float)iterations);
