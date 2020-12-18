@@ -16,15 +16,16 @@
 #include "config.h"
 
 /* e.g. random_number(-4.5, 80) will generate a random number between -4.5 and
- * 80 */
+ * 80. */
 float
 random_number(float lower_bound, float upper_bound)
 {
-	float random_number = ( upper_bound - lower_bound ) * (float)rand()/(float)(RAND_MAX) + lower_bound;
+	float random_number = ( upper_bound - lower_bound ) *
+		(float)rand()/(float)(RAND_MAX) + lower_bound;
 	return random_number;
 }
 
-/* specifically calculates distance of (x,y) from (0,0) */
+/* Specifically, this calculates the distance of (x,y) from (0,0). */
 float
 distance(float x, float y)
 {
@@ -35,10 +36,11 @@ distance(float x, float y)
 int
 main(void)
 {
-	srand(time(NULL)); /* random seed based off of the clock of the system */
+	srand(time(NULL)); /* Sets random seed that is based off of the clock of the
+			    * system. */
 
 	float coord[2];
-	int points_inside = 0;
+	int points_inside = 0; /* Count starts with 0 points inside. */
 	for (int index = 1; index <= iterations; index++) {
 		coord[0] = random_number(-0.5,0.5);
 		coord[1] = random_number(-0.5,0.5);
