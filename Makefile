@@ -6,7 +6,8 @@ DOC := doc
 SRC := src
 BIN := bin
 
-.PHONY: all build clean install uninstall
+# For non-GNU make
+SHELL ?= /bin/sh
 
 all: build
 
@@ -38,3 +39,5 @@ uninstall:
 	@echo "Uninstalling man page..."
 	rm -f $(MANPREFIX)/man1/$(MAN)
 	@echo "Done"
+
+.PHONY: all build clean install uninstall
