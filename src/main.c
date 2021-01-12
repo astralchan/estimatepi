@@ -23,16 +23,14 @@
 float
 random_number(float lower_bound, float upper_bound)
 {
-	float random_number = ( upper_bound - lower_bound ) * (float)rand()/(float)(RAND_MAX) + lower_bound;
-	return random_number;
+	return ( upper_bound - lower_bound ) * (float)rand()/(float)(RAND_MAX) + lower_bound;
 }
 
 /* Specifically, this calculates the distance of (x,y) from (0,0). */
 float
 distance(float x, float y)
 {
-	float distance = sqrt( x*x + y*y );
-	return distance;
+	return sqrt( x*x + y*y );
 }
 
 int
@@ -50,6 +48,5 @@ main(void)
 	}
 	float result = 4 * ((float)points_inside / (float)iterations);
 	printf("%f\n", result);
-
 	return 0;
 }
