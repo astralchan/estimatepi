@@ -78,12 +78,15 @@ main(int argc, char *argv[])
 
 		if (j%interval == 0) {
 			mvprintw(0, 0, "pi(%d): %f\n", i,
-			    4*pointsInside/(float)iterations);
+			    4*pointsInside/(float)i);
 			refresh();
 			sleep(1);
 		}
 	}
 
 	endwin();
+
+	printf("pi(%d): %f\n", iterations, 4*pointsInside/(float)iterations);
+
 	return EXIT_SUCCESS;
 }
