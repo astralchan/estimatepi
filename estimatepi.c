@@ -9,18 +9,18 @@
 
 #include <math.h>
 
-static float random_number(float lowerBound, float upperBound);
-static float distance(float x, float y);
+static double random_number(double lowerBound, double upperBound);
+static double distance(double x, double y);
 
-static float
-random_number(float lowerBound, float upperBound)
+static double
+random_number(double lowerBound, double upperBound)
 {
-	return (upperBound-lowerBound) * rand()/(float)RAND_MAX + lowerBound;
+	return (upperBound-lowerBound) * rand()/(double)RAND_MAX + lowerBound;
 }
 
 /* Specifically, this calculates the distance of (x,y) from (0,0). */
-static float
-distance(float x, float y)
+static double
+distance(double x, double y)
 {
 	return sqrt(x*x + y*y);
 }
@@ -30,8 +30,8 @@ main(int argc, char *argv[])
 {
 	int c;
 	int errflg = 0;
-	int interval = 1;
-	float radius = 0.5;
+	long long interval = 1;
+	double radius = 0.5;
 
 	if (argc == 1)
 		errflg = 1;
@@ -42,7 +42,7 @@ main(int argc, char *argv[])
 	while ((c = getopt(argc, argv, "i:r:")) != -1) {
 		switch(c) {
 		case 'i':
-			interval = atoi(optarg);
+			interval = atoll(optarg);
 			break;
 		case 'r':
 			radius = atof(optarg);
@@ -57,7 +57,7 @@ main(int argc, char *argv[])
 		errflg = 1;
 
 	if (errflg == 1) {
-		fprintf(stderr, "usage: %s [-i <int>] [-R float] <int>\n", argv[optind-1]);
+		fprintf(stderr, "usage: %s [-i <int>] [-R double] <int>\n", argv[optind-1]);
 		return EXIT_FAILURE;
 	}
 
@@ -67,19 +67,19 @@ main(int argc, char *argv[])
 	/* Random seed from clock */
 	srand(time(NULL));
 
-	float coord[2];
-	int pointsInside = 0;
-	int iterations = atoi(argv[optind]);
+	double coord[2];
+	long long pointsInside = 0;
+	long long iterations = atoll(argv[optind]);
 
-	for (int i = 1, j = 0; i <= iterations; ++i, ++j) {
+	for (long long i = 1; i <= iterations; ++i) {
 		coord[0] = random_number(-radius, radius);
 		coord[1] = random_number(-radius, radius);
 		if (distance(coord[0], coord[1]) <= radius)
 			++pointsInside;
 
-		if (j%interval == 0) {
-			mvprintw(0, 0, "pi(%d): %f\n", i,
-			    4*pointsInside/(float)i);
+		if (i%interval == 0) {
+			mvprintw(0, 0, "pi(%lld): %.32f", i,
+			    4*pointsInside/(double)i);
 			refresh();
 			sleep(1);
 		}
@@ -87,7 +87,8 @@ main(int argc, char *argv[])
 
 	endwin();
 
-	printf("pi(%d): %f\n", iterations, 4*pointsInside/(float)iterations);
+	printf("pi(%lld): %.32f\n", iterations,
+	    4*pointsInside/(double)iterations);
 
 	return EXIT_SUCCESS;
 }
