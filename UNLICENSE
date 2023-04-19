@@ -1,31 +1,3 @@
-# estimatepi
-
-A project I made a long time while learning C. Now released into the public
-domain with more functionality. Re-wrote it cause I got bored.
-
-# Build
-
-You need ncurses, make, and a c compiler. Run:
-
-```
-$ make
-```
-
-# Usage
-
-```
-$ ./estimate [-i <INTERVAL>] <ITERATIONS>
-```
-
-```
-- ITERATIONS
-    - Specify how many iterations this will take.
-- -i <INTERVAL>
-    - Specify the interval at which to print the numbers.
-```
-
-# License
-
 This is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or
@@ -49,5 +21,4 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to
-<[https://unlicense.org/](https://unlicense.org/)>
+For more information, please refer to <http://unlicense.org/>
