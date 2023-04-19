@@ -9,9 +9,6 @@
 
 #include <math.h>
 
-/* definitions */
-#define RADIUS 0.5
-
 static float random_number(float lowerBound, float upperBound);
 static float distance(float x, float y);
 
@@ -34,6 +31,7 @@ main(int argc, char *argv[])
 	int c;
 	int errflg = 0;
 	int interval = 1;
+	float radius = 0.5;
 
 	if (argc == 1)
 		errflg = 1;
@@ -41,10 +39,13 @@ main(int argc, char *argv[])
 	extern char *optarg;
 	extern int optopt, optind;
 
-	while ((c = getopt(argc, argv, "i:")) != -1) {
+	while ((c = getopt(argc, argv, "i:r:")) != -1) {
 		switch(c) {
 		case 'i':
 			interval = atoi(optarg);
+			break;
+		case 'r':
+			radius = atof(optarg);
 			break;
 		case '?':
 			fprintf(stderr, "Unrecognized option: -%c\n", optopt);
@@ -56,7 +57,7 @@ main(int argc, char *argv[])
 		errflg = 1;
 
 	if (errflg == 1) {
-		fprintf(stderr, "usage: %s [-i <int>] <int>\n", argv[optind-1]);
+		fprintf(stderr, "usage: %s [-i <int>] [-R float] <int>\n", argv[optind-1]);
 		return EXIT_FAILURE;
 	}
 
@@ -71,9 +72,9 @@ main(int argc, char *argv[])
 	int iterations = atoi(argv[optind]);
 
 	for (int i = 1, j = 0; i <= iterations; ++i, ++j) {
-		coord[0] = random_number(-RADIUS, RADIUS);
-		coord[1] = random_number(-RADIUS, RADIUS);
-		if (distance(coord[0], coord[1]) <= RADIUS)
+		coord[0] = random_number(-radius, radius);
+		coord[1] = random_number(-radius, radius);
+		if (distance(coord[0], coord[1]) <= radius)
 			++pointsInside;
 
 		if (j%interval == 0) {

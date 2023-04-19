@@ -14,14 +14,16 @@ $ make
 # Usage
 
 ```
-$ ./estimate [-i <INTERVAL>] <ITERATIONS>
-```
+$ ./estimate [OPTIONS] <ITERATIONS>
 
-```
+OPTIONS
+
 - ITERATIONS
     - Specify how many iterations this will take.
 - -i <INTERVAL>
     - Specify the interval at which to print the numbers.
+- -r <RADIUS>
+    - Specify radius of circle
 ```
 
 # License
