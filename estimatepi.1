@@ -1,0 +1,27 @@
+.TH ESTIMATEPI 1
+
+.SH NAME
+estimatepi \- Use random numbers to estimate the math constant pi
+
+.SH SYNOPSIS
+.B estimatepi
+[\fIOPTIONS\fR] <\fIITERATIONS\fR>
+
+.SH DESCRIPTION
+Simulate picking random points on a square grid, and compare how many of them
+are within an inscribed circle. Use the ratio to estimate pi. Estimate using
+\fIITERATIONS\fR number of iterations.
+
+.SH OPTIONS
+
+.TP
+.B \-i <\fIINTERVAL\fR>
+Display the estimation every \fIINTERVAL\fR iterations.
+
+.TP
+.B \-r <\fIRADIUS\fR>
+Specify to use \fIRADIUS\fR for the radius of the circle.
+
+.TP
+.B \-s <\fISPEED\fR>
+Multiply the speed at which iterations are shown at \fISPEED\fR times speed.

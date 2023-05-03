@@ -23,7 +23,9 @@ OPTIONS
 - -i <INTERVAL>
     - Specify the interval at which to print the numbers.
 - -r <RADIUS>
-    - Specify radius of circle
+    - Specify radius of circle.
+- -s <SPEED>
+    - Specify the speed at which to display between intervals.
 ```
 
 # License
