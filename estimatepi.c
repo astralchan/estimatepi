@@ -7,22 +7,20 @@
 #include <time.h>
 #include <ncurses.h>
 
-#include <math.h>
+static inline double random_number(double lowerBound, double upperBound);
+static inline double square_distance(double x, double y);
 
-static double random_number(double lowerBound, double upperBound);
-static double distance(double x, double y);
-
-static double
+static inline double
 random_number(double lowerBound, double upperBound)
 {
 	return (upperBound-lowerBound) * rand()/(double)RAND_MAX + lowerBound;
 }
 
-/* Specifically, this calculates the distance of (x,y) from (0,0). */
-static double
-distance(double x, double y)
+/* Specifically, this calculates the square distance of (x,y) from (0,0). */
+static inline double
+square_distance(double x, double y)
 {
-	return sqrt(x*x + y*y);
+	return x*x + y*y;
 }
 
 int
@@ -85,7 +83,7 @@ main(int argc, char *argv[])
 	for (long long i = 1; i <= iterations; ++i) {
 		coord[0] = random_number(-radius, radius);
 		coord[1] = random_number(-radius, radius);
-		if (distance(coord[0], coord[1]) <= radius)
+		if (square_distance(coord[0], coord[1]) < radius*radius)
 			++pointsInside;
 
 		if (i%interval == 0) {
